@@ -6,5 +6,4 @@
 # FEATURES
     - Header
     - Login/Logout page
-    - Setting up Routing
-    - 
+    - Setting up Router
