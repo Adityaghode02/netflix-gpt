@@ -7,3 +7,7 @@
     - Header
     - Login/Logout page
     - Setting up Router
+    - Routing
+    - Sign up / sigin form
+    - Validation
+    - UseRef Hook
