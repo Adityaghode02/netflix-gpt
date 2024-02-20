@@ -1,29 +1,103 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../Utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../Utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../Utils/userSlice";
 
 const Login = () => {
-  const [isLogin, setIsLogin] = useState(true);
-  const [errorMessage,seterrorMessage] = useState("");
+  const [isSignin, setisSignin] = useState(true);
+  const [errorMessage, seterrorMessage] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const email = useRef();
   const password = useRef();
+  const name = useRef();
 
   const toggleIt = () => {
-    setIsLogin(!isLogin);
+    setisSignin(!isSignin);
   };
 
   const HandleButtonClick = () => {
     //first validate the data
     const message = checkValidData(email.current.value, password.current.value);
     seterrorMessage(message);
+
+    if (message) return;
+
+    //Sign in / Sign Up
+
+    if (!isSignin) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          //update user api
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value,
+            photoURL:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ73LR3GtFUhqkbskcby8wU3EzCvjBViHLtpPQG8So6Dw&s",
+          })
+            .then(() => {
+              const { uid , email , displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              seterrorMessage(error.message);
+            });
+
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          seterrorMessage(errorMessage);
+        });
+    } else {
+      //sign in login
+
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          seterrorMessage(errorMessage);
+        });
+    }
   };
 
   return (
     <div>
       <Header />
-      <div className="absolute">
+      <div className="absolute ">
         <img
+          className="brightness-50"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/4da5d2b1-1b22-498d-90c0-4d86701dffcc/98a1cb1e-5a1d-4b98-a46f-995272b632dd/IN-en-20240129-popsignuptwoweeks-perspective_alpha_website_small.jpg"
           alt="background"
         />
@@ -36,10 +110,11 @@ const Login = () => {
         className="absolute w-3/12 mt-44 p-12 bg-black bg-opacity-80 mx-auto right-0 left-0 text-white rounded-lg"
       >
         <h1 className="text-3xl font-bold mb-5 p-1 ">
-          {isLogin ? "Sign In" : "Sign Up"}
+          {isSignin ? "Sign In" : "Sign Up"}
         </h1>
-        {!isLogin && (
+        {!isSignin && (
           <input
+            ref={name}
             type="text"
             placeholder="Enter Full Name"
             className="p-2 m-2 w-full bg-gray-700"
@@ -62,11 +137,11 @@ const Login = () => {
           className="p-2 m-2 w-full bg-orange-600"
           onClick={HandleButtonClick}
         >
-          {isLogin ? "Login" : "Sign Up"}
+          {isSignin ? "Signin" : "Sign Up"}
         </button>
 
         <p className="pt-8 pl-2 cursor-pointer" onClick={toggleIt}>
-          {isLogin
+          {isSignin
             ? "New to Netflix-gpt ?  sign Up Now"
             : "Already SignUp ? Login Now"}
         </p>
