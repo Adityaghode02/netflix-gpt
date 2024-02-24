@@ -7,14 +7,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../Utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Utils/userSlice";
+import { USER_AVATAR } from "../Utils/constants";
 
 const Login = () => {
   const [isSignin, setisSignin] = useState(true);
   const [errorMessage, seterrorMessage] = useState("");
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const email = useRef();
@@ -46,8 +45,7 @@ const Login = () => {
           //update user api
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
-            photoURL:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ73LR3GtFUhqkbskcby8wU3EzCvjBViHLtpPQG8So6Dw&s",
+            photoURL:USER_AVATAR
           })
             .then(() => {
               const { uid , email , displayName, photoURL } = auth.currentUser;
@@ -59,13 +57,11 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               seterrorMessage(error.message);
             });
 
-          console.log(user);
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -82,8 +78,11 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+          //update user api
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value,
+            photoURL:USER_AVATAR
+          })
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -93,9 +92,9 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div >
       <Header />
-      <div className="absolute ">
+      <div className="absolute -z-30 ">
         <img
           className="brightness-50"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/4da5d2b1-1b22-498d-90c0-4d86701dffcc/98a1cb1e-5a1d-4b98-a46f-995272b632dd/IN-en-20240129-popsignuptwoweeks-perspective_alpha_website_small.jpg"
