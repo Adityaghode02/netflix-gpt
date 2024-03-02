@@ -24,4 +24,7 @@
     - Update Profile api call
     - Bugfix : if user is not loggin then redirects to Login page
     - Bugfix : if component is unmounted the Unsubscribe
+    - Registered for TMDB Api and get access Token
+    - Get data from nowplayling movies
+    - 
     

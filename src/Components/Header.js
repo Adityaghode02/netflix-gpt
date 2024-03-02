@@ -15,7 +15,7 @@ const Header = () => {
 
   const onSignoutHandle = () =>{
     signOut(auth).then(() => {
-      // navigate("/");
+      navigate("/");
     }).catch((error) => {
       navigate("/error");
     });
@@ -35,7 +35,7 @@ const Header = () => {
       } else {
         // User is signed out
         dispatch(removeUser());
-        navigate("/");
+        // navigate("/");
       }
     });
     //unsubscribe when component unmounts
