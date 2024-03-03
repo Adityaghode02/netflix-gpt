@@ -25,6 +25,13 @@
     - Bugfix : if user is not loggin then redirects to Login page
     - Bugfix : if component is unmounted the Unsubscribe
     - Registered for TMDB Api and get access Token
-    - Get data from nowplayling movies
-    - 
+    - Get data from nowplayling movies custom Hook
+    - Added Video Title && Video Background Through VIDEP_API
+    - Creaed movie Slice
+    - Planning for main Container && Secondatry Container 
+    - fetched the trailer Video
+    - Update Video in movieSlice
+    - Embedded The Youtube Video && Make it AutoPlay and Mute =1 
+    - make MainContainer Awesome & added Tailwind
+    
     
