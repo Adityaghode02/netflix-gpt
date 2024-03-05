@@ -33,5 +33,10 @@
     - Update Video in movieSlice
     - Embedded The Youtube Video && Make it AutoPlay and Mute =1 
     - make MainContainer Awesome & added Tailwind
+    - Build the Secondary Container
+    - TMDB IMG_CDN api
+    - Tailwind is Great
+    - usenowplayin && usepopularmovies API
+    - 
     
     

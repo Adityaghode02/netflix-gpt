@@ -46,7 +46,7 @@ const Header = () => {
 
   return (
     //Netflix logo
-    <div className="absolute w-screen z-10 flex justify-between">
+    <div className="absolute w-screen z-50 flex justify-between">
   
       <img className="w-48 brightness-110 "
         src={LOGO}
@@ -55,7 +55,7 @@ const Header = () => {
     
     {user &&  ( <div>
     <img src={user?.photoURL} alt="UserPhoto"></img>
-    <button className="font-bold bg-red-300 p-2 m-2 rounded" onClick={onSignoutHandle}>Sign out</button>
+    <button className="font-bold bg-red-300 rounded" onClick={onSignoutHandle}>Sign out</button>
     </div> ) }
     </div>
 

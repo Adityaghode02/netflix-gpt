@@ -3,10 +3,12 @@ import Header from "./Header";
 import useNowPlayingMovies from "../Hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import usePopularMovies from "../Hooks/usePopularMovies";
 
 const Browse = () => {
 
   useNowPlayingMovies();
+  usePopularMovies();
 
 
   return (
@@ -20,10 +22,10 @@ const Browse = () => {
         - Movies * n
             - Cards * n
       */}
-
+<div className="absolute -z-30 ">
     <MainContainer/>
     <SecondaryContainer/>
-
+    </div> 
     </div>
   );
 };

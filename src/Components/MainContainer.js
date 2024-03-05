@@ -8,14 +8,16 @@ const MainContainer = ()=>{
 
     if(movies === null) return ;
 
-    const mainMovie = movies[6];
-    console.log("mainMovie");
-    console.log(mainMovie);//it is an object mainmovie
+    const mainMovie = movies[5];
+    // console.log("mainMovie");
+    // console.log(mainMovie);//it is an object mainmovie
 
     const {original_title , overview , id} = mainMovie;
     return <div>  
+        
         <VideoTitle title={original_title} overview={overview}/>
-        <VideoBackground movieId={id}/>
+        <div > <VideoBackground movieId={id}/></div>
+
     </div>
     
 
