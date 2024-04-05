@@ -6,60 +6,76 @@ import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../Utils/userSlice";
 import { LOGO } from "../Utils/constants";
+import { toggleGptSearchView } from "../Utils/gptSlice";
 
 const Header = () => {
- 
   const dispatch = useDispatch();
-  
+
   const navigate = useNavigate();
 
-  const onSignoutHandle = () =>{
-    signOut(auth).then(() => {
-      navigate("/");
-    }).catch((error) => {
-      navigate("/error");
-    });
-  }
+  const user = useSelector((store) => store.user);
 
-  const user = useSelector(store => store.user);
-  
+  const onSignoutHandle = () => {
+    signOut(auth)
+      .then(() => {
+        // navigate("/");
+      })
+      .catch((error) => {
+        navigate("/error");
+      });
+  };
 
-  useEffect(()=>{
-
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, 
-        const { uid , email , displayName, photoURL } = user;
-        dispatch(addUser({uid:uid , email:email , displayName:displayName , photoURL:photoURL}));
+        // User is signed in,
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
         navigate("/browse");
       } else {
         // User is signed out
         dispatch(removeUser());
-        // navigate("/");
+        navigate("/");
       }
     });
     //unsubscribe when component unmounts
     return () => unsubscribe();
+  }, []);
 
-      },[])
-
-
+  const handleGptSearchClick = () =>{
+      dispatch(toggleGptSearchView());
+  };
   return (
     //Netflix logo
-    <div className="absolute w-screen z-50 flex justify-between">
-  
-      <img className="w-48 brightness-110 "
-        src={LOGO}
-        alt="Logo"
-      />
-    
-    {user &&  ( <div>
-    <img src={user?.photoURL} alt="UserPhoto"></img>
-    <button className="font-bold bg-red-300 rounded" onClick={onSignoutHandle}>Sign out</button>
-    </div> ) }
-    </div>
+    <div className="absolute w-full z-50 flex justify-between p-0 m-0">
+      <img className="w-48 brightness-110 " src={LOGO} alt="Logo" />
 
-    
+      {user && (
+        <div className="flex text-white">
+          <div className="mt-3 mr-40">
+            <button className="bg-purple-700 m-2 p-2 rounded-2xl font-bold" onClick={handleGptSearchClick}>GPT Search  🗺️</button>
+          </div>
+          <div className="w-14 p-3 mt-2">
+            <img src={user?.photoURL} alt="UserPhoto"></img>
+          </div>
+          <div className="mt-2">
+            <button
+              className="font-bold p-2 m-2 bg-blue-700 rounded"
+              onClick={onSignoutHandle}
+            >
+              Sign out
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

@@ -14,11 +14,12 @@ import { USER_AVATAR } from "../Utils/constants";
 const Login = () => {
   const [isSignin, setisSignin] = useState(true);
   const [errorMessage, seterrorMessage] = useState("");
+
   const dispatch = useDispatch();
 
-  const email = useRef();
-  const password = useRef();
-  const name = useRef();
+  const email = useRef(null);
+  const password = useRef(null);
+  const name = useRef(null);
 
   const toggleIt = () => {
     setisSignin(!isSignin);
@@ -41,7 +42,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed up
-          const user = userCredential.user;
+          // const user = userCredential.user;
           //update user api
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
@@ -77,7 +78,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
+          // const user = userCredential.user;
           //update user api
           updateProfile(auth.currentUser, {
             displayName: name.current.value,

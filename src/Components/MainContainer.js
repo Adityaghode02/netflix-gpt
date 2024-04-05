@@ -8,7 +8,7 @@ const MainContainer = ()=>{
 
     if(movies === null) return ;
 
-    const mainMovie = movies[5];
+    const mainMovie = movies[0];
     // console.log("mainMovie");
     // console.log(mainMovie);//it is an object mainmovie
 

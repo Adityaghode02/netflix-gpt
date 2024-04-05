@@ -37,6 +37,10 @@
     - TMDB IMG_CDN api
     - Tailwind is Great
     - usenowplayin && usepopularmovies API
-    - 
+    - GPT SEARCH page
+    - Redo
     
+
+    - GPT Toggle feature using redux
+    - 
     
