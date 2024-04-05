@@ -42,5 +42,5 @@
     
 
     - GPT Toggle feature using redux
-    - 
+    - Multi-Language Support Built
     

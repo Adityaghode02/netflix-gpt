@@ -6,7 +6,7 @@ const SecondaryContainer = () => {
 
   if(movies.nowPlayingMovies && movies.PopularMovies === null) return ;
 
-  console.log(movies);
+  // console.log(movies);
   
   return (
     // movielist - popular   : moviecarn *n
