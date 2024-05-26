@@ -66,16 +66,16 @@ const Header = () => {
 
       {user && (
         <div className="flex text-white">
-
+          { showGptSearch && 
           <select className="bg-gray-900 m-5 p-1" onChange={handleLanguageChange}>
             {SUPPORTED_LANG.map(lang => <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
           </select>
-
-          { !showGptSearch && 
+            }
+          
             <div className="mt-3 mr-40">
-            <button className="bg-purple-700 m-2 p-2 rounded-2xl font-bold" onClick={handleGptSearchClick}>GPT Search  🗺️</button>
+            <button className="bg-purple-700 m-2 p-2 rounded-2xl font-bold" onClick={handleGptSearchClick}>{!showGptSearch ? "GPTSearch" : "HomePage" } 🗺️</button>
           </div>
-          }
+          
             
           <div className="w-14 p-3 mt-2">
             <img src={user?.photoURL} alt="UserPhoto"></img>
