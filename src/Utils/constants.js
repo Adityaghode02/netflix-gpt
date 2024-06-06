@@ -9,7 +9,7 @@ export const API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MTUzMTg1NzcwODMzZmNjODFkZjVmYzFiMDQyZDBkNSIsInN1YiI6IjY1ZDlhOGJmZmNiOGNjMDE4NmNiMjdjOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EEJJ-5534mzN7_mobLlRnYJ3OyIAU23SiZ3xSErhAxI",
+      "Bearer "+ process.env.REACT_APP_TMDP_KEY,
   },
 };
 
@@ -17,4 +17,6 @@ export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
 export const LOGIN_BACKGROUND = "https://assets.nflxext.com/ffe/siteui/vlv3/4da5d2b1-1b22-498d-90c0-4d86701dffcc/98a1cb1e-5a1d-4b98-a46f-995272b632dd/IN-en-20240129-popsignuptwoweeks-perspective_alpha_website_small.jpg";
 
-export const SUPPORTED_LANG = [{identifier : "en",  name:"English"}, {identifier : "hindi",  name:"Hindi"}, {identifier : "spanish",  name:"Spanish"}, ]
+export const SUPPORTED_LANG = [{identifier : "en",  name:"English"}, {identifier : "hindi",  name:"Hindi"}, {identifier : "spanish",  name:"Spanish"}, ];
+
+export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;

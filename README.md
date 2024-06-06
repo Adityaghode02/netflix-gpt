@@ -45,3 +45,5 @@
     - Multi-Language Support Built  (BONUS FEATURE)
     - GPT Search Page
     - GPT Search Bar
+    - multi-language feature in App == Big feature
+    - 
