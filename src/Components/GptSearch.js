@@ -3,12 +3,14 @@ import GptMovieSuggetions from "./GptMovieSuggetions";
 import { LOGIN_BACKGROUND } from "../Utils/constants";
 const GptSearch = () => {
     return <div>
-        <div className="absolute -z-10">
-            <img className="" src={LOGIN_BACKGROUND}>
+        <div className="fixed -z-10">
+            <img className="md:h-full h-screen object-cover" src={LOGIN_BACKGROUND} alt="logo">
             </img>
         </div>
+        <div className="">
         <GptSearchBar/>
         <GptMovieSuggetions/>
+        </div>
     </div>
 }
 

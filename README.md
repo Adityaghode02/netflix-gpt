@@ -46,4 +46,11 @@
     - GPT Search Page
     - GPT Search Bar
     - multi-language feature in App == Big feature
-    - 
+    - GPT Suggetions && GPT Search Page
+    - MovieList component ReUse
+    - Security Concerns env
+    - Memoization ( HUGE OPTIMIZATION)
+    
+    - Responsiveness
+    - Supported In Small Devices
+    

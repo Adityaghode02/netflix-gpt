@@ -95,9 +95,9 @@ const Login = () => {
   return (
     <div >
       <Header />
-      <div className="absolute -z-30 ">
+      <div className="absolute -z-30">
         <img
-          className="brightness-50"
+          className="brightness-50 md:h-full h-screen object-cover "
           src={LOGIN_BACKGROUND}
           alt="background"
         />
@@ -107,7 +107,7 @@ const Login = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="absolute w-3/12 mt-44 p-12 bg-black bg-opacity-80 mx-auto right-0 left-0 text-white rounded-lg"
+        className="absolute w-3/4 md:w-3/12 md:mt-20 mt-44 pt-12 bg-black bg-opacity-80 mx-auto left-0 right-0 text-white rounded-lg pl-10 pr-12 pb-10 "
       >
         <h1 className="text-3xl font-bold mb-5 p-1 ">
           {isSignin ? "Sign In" : "Sign Up"}
