@@ -1,44 +1,30 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { API_OPTIONS } from "../Utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addtrailerVideo } from "../Utils/movieSlice";
 
-const useMovieTrailer = (movieId)=>{
-    const dispatch = useDispatch();
+const useMovieTrailer = (movieId) => {
+  const dispatch = useDispatch();
+  const trailerVideo = useSelector(store => store.movies.trailerVideo);
 
-    const trailerVideo = useSelector(store=> store.movies.trailerVideo);
-
-    //fetching trailer hook && updating Store data
-
-  const getMovieVideos = async () => {
+  const getMovieVideos = useCallback(async () => {
     const response = await fetch(
-      "https://api.themoviedb.org/3/movie/"+movieId+"/videos?language=en-US",
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
       API_OPTIONS
     );
     const json = await response.json();
-    // console.log("VideoApi");
-    // console.log(json);
 
-    const trailerArray = json.results.filter(function checkTrailer(video) {
-      if (video.type === "Trailer") {
-        return video;
-      }
-    });
-
+    const trailerArray = json.results.filter(video => video.type === "Trailer");
     const Trailer = trailerArray.length ? trailerArray[0] : json.results[0];
 
-    // console.log("trailerArray");
-    // console.log(trailerArray);
-    // console.log("trailerObj");
-    // console.log(Trailer);
-    //we can also useState variable instead of this
     dispatch(addtrailerVideo(Trailer));
-    
-  };
+  }, [dispatch, movieId]); // Memoize `getMovieVideos` with `dispatch` and `movieId` as dependencies
 
   useEffect(() => {
-    !trailerVideo && getMovieVideos();
-  }, []);
+    if (!trailerVideo) {
+      getMovieVideos();
+    }
+  }, [trailerVideo, getMovieVideos]); // Added `trailerVideo` and `getMovieVideos` as dependencies
+};
 
-}
 export default useMovieTrailer;
