@@ -4,13 +4,13 @@ import VideoTitle from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
 
 const MainContainer = () => {
-    const movies = useSelector((store) => store?.movies?.nowPlayingMovies);
+    const movies = useSelector((store) => store?.movies?.nowPlayingMovies) || [];
 
-    if(movies === null) return;
+    if (movies.length === 0) return <div className="text-white">No movies available</div>;
 
     const mainMovie = movies[0];
 
-    const { original_title, overview, id } = mainMovie ;
+    const { original_title, overview, id } = mainMovie || {};
 
     return (
         <div className="md:p-0 pt-[45%] bg-black">
