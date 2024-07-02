@@ -1,56 +1,60 @@
 # NETFLIX-GPT
-    - Create-react-app
-    - coufigured Tailwind
+
+![Screenshot](./src/assets/netflix-gptSS.png)
+
+**Netflix-GPT** is a feature-rich web application built with ReactJS and Tailwind CSS. This project integrates a movie recommendation system with GPT-based search capabilities, offering users an engaging and interactive experience.
 
 
-# FEATURES
-    - Header
-    - Login/Logout page
-    - Setting up Router
-    - Routing
-    - Sign up / sigin form
-    - Validation
-    - UseRef Hook
-    - Installation of FireBase
-    - Firebase Deploy Steps
-       * firebase login
-       * firebase init
-       * firebase deploy
-    - Created URL deployed
-    - Implemented Sign in user API
-    - Redux Store
-    - created user Slice in redux store 
-    - Implemented SignOut
-    - Update Profile api call
-    - Bugfix : if user is not loggin then redirects to Login page
-    - Bugfix : if component is unmounted the Unsubscribe
-    - Registered for TMDB Api and get access Token
-    - Get data from nowplayling movies custom Hook
-    - Added Video Title && Video Background Through VIDEP_API
-    - Creaed movie Slice
-    - Planning for main Container && Secondatry Container 
-    - fetched the trailer Video
-    - Update Video in movieSlice
-    - Embedded The Youtube Video && Make it AutoPlay and Mute =1 
-    - make MainContainer Awesome & added Tailwind
-    - Build the Secondary Container
-    - TMDB IMG_CDN api
-    - Tailwind is Great
-    - usenowplayin && usepopularmovies API
-    - GPT SEARCH page
-    - Redo
-    
+### **FEATURES**
 
-    - GPT Toggle feature using redux
-    - Multi-Language Support Built  (BONUS FEATURE)
-    - GPT Search Page
-    - GPT Search Bar
-    - multi-language feature in App == Big feature
-    - GPT Suggetions && GPT Search Page
-    - MovieList component ReUse
-    - Security Concerns env
-    - Memoization ( HUGE OPTIMIZATION)
-    
-    - Responsiveness
-    - Supported In Small Devices
-    
+- Header Navigation
+- User Authentication
+- Sign Up / Sign In Forms
+- Form Validation
+- Firebase Integration
+  - Firebase Deployment
+- Redux State Management
+  - User Slice
+  - Sign-Out Feature
+  - Profile Update
+  - Bug Fixes
+- TMDB API Integration
+  - Custom Hook for Now Playing Movies
+  - Movie Information
+  - Movie Slice
+  - Trailer Video Fetching
+  - YouTube Video Embedding
+  - MainContainer Design
+  - Secondary Container
+  - TMDB IMG_CDN API
+- GPT-Based Search
+  - Search Bar
+  - Search Suggestions
+  - Multi-Language Support (BONUS)
+  - GPT Toggle Feature
+- Performance Optimization
+  - Memoization
+- Responsiveness
+  - Support for Small Devices
+
+### **GPT Features**
+
+- **GPT Search Page:** Created a dedicated page for GPT-based search.
+- **GPT Search Bar:** Implemented a search bar for GPT queries.
+- **GPT Suggestions:** Added GPT suggestions for search queries.
+- **Multi-Language Support (BONUS FEATURE):** Added multi-language support for the application.
+- **GPT Toggle Feature:** Enabled toggling between GPT search and other features.
+
+
+
+## Technologies Used
+
+- **ReactJS:** `npm install react --save`
+- **Tailwind CSS:** `npm install tailwindcss --save`
+  - Utility-first CSS framework for modern web design.
+- **React-Icons:** `npm install react-icons --save`
+  - Icons from the *Feather* or *Heroicon* sections of the [React-Icons](https://react-icons.github.io/react-icons/) library.
+- **Firebase:** `npm install firebase --save`
+  - For authentication and deployment.
+- **TMDB API:** Movie database API for fetching movie data.
+- **GeMini API:** for searching purpose
